@@ -1,11 +1,13 @@
+import annunciationImage from '../assets/annunciation.jpg'
+
 const mysteryData = [
     {
         category: "joyful",
-        image: "image source",
+        image: annunciationImage,
         mysteries: [
             {
                 name: "The Annunciation",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
@@ -32,7 +34,7 @@ const mysteryData = [
     },
     {
         category: "luminous",
-        image: "image source",
+        image: annunciationImage,
         mysteries: [
             {
                 name: "The Baptism in the Jordan",
@@ -63,7 +65,7 @@ const mysteryData = [
     },
     {
         category: "sorrowful",
-        image: "image source",
+        image: annunciationImage,
         mysteries: [
             {
                 name: "The Agony in the Garden",
@@ -94,7 +96,7 @@ const mysteryData = [
     },
     {
         category: "glorious",
-        image: "image source",
+        image: annunciationImage,
         mysteries: [
             {
                 name: "The Resurrection",

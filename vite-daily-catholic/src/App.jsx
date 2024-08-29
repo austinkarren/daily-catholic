@@ -14,6 +14,7 @@ const App = () => {
             <CategoryCard
               key={index}
               title={item.category}
+              image={item.image}
             />
 
           ))
