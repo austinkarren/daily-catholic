@@ -1,16 +1,25 @@
 import './App.css'
 import mysteryData from './data/mysteryData'
+import CategoryCard from './components/CategoryCard'
+import MysteryCard from './components/MysteryCard'
 
 const App = () => {
 
   return (
     <>
       <h1 className='text-blue-500'>Daily Catholic</h1>
-      {
-        mysteryData.map((item, index) => (
-          <p key={index}>{item.category}</p>
-        ))
-      }
+      <div className='flex'>
+        {
+          mysteryData.map((item, index) => (
+            <CategoryCard
+              key={index}
+              title={item.category}
+            />
+
+          ))
+        }
+
+      </div>
       {
         mysteryData.map(item => (
           item.mysteries.map((mystery, index) => (
