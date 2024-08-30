@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <h1 className='text-blue-500'>Daily Catholic</h1>
-      <div className='flex'>
+      <div className='flex p-9 gap-4'>
         {
           mysteryData.map((item, index) => (
             <CategoryCard
@@ -24,7 +24,11 @@ const App = () => {
       {
         mysteryData.map(item => (
           item.mysteries.map((mystery, index) => (
-            <p key={index}>{mystery.name}</p>
+            <MysteryCard 
+              key={index}
+              title={mystery.name}
+              image={item.image}
+            />
           ))
         ))
       }
