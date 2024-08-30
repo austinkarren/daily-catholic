@@ -12,22 +12,22 @@ const mysteryData = [
             },
             {
                 name: "The Visitation",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Nativity",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Presentation in the Temple",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Finding in the Temple",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
         ]
@@ -38,27 +38,27 @@ const mysteryData = [
         mysteries: [
             {
                 name: "The Baptism in the Jordan",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Wedding Feast at Cana",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Proclamation of the Kingdom",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Transfiguration",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Institution of the Eucharist",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
         ]
@@ -69,27 +69,27 @@ const mysteryData = [
         mysteries: [
             {
                 name: "The Agony in the Garden",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Scourging at the Pillar",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Crowning of Thorns",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Carrying of the Cross",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Crucifixion",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
         ]
@@ -100,27 +100,27 @@ const mysteryData = [
         mysteries: [
             {
                 name: "The Resurrection",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Ascension",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Descent of the Holy Spirit",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Assumption",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Coronation of Mary",
-                image: "image source",
+                image: annunciationImage,
                 scripture: "scripture passage"
             },
         ]
