@@ -1,12 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import mysteryData from './data/mysteryData'
 import CategoryCard from './components/CategoryCard'
-import MysteryCard from './components/MysteryCard'
+import fetchTodaysMysteries from './functions/fetchTodaysMysteries'
+// import MysteryCard from './components/MysteryCard'
 
 const App = () => {
 
-  const todaysMysteries = "sorrowful"
+
+  const todaysMysteries = fetchTodaysMysteries()
+
   const [activeMysteries, setActiveMysteries] = useState(todaysMysteries)
 
 
@@ -25,7 +28,8 @@ const App = () => {
           ))
         }
       </div>
-      <div className='flex p-9 gap-4'>
+      {/* TODO:  */}
+      {/* <div className='flex p-9 gap-4'>
         {
           mysteryData.map(() => (
             item.category === activeMysteries ?
@@ -40,7 +44,7 @@ const App = () => {
             ""
           ))
         }
-      </div>
+      </div> */}
 
     </>
   )
