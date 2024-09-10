@@ -14,15 +14,56 @@
 
 // During the season of Lent, the Sorrowful Mysteries are prayed on Sundays.
 
-const fetchTodaysMysteries = () => {
-    fetch(`http://calapi.inadiutorium.cz/api/v0/en/calendars/general-en/today`)
-        .then((response) => response.json())
-        .then((data) => {
-            console.log("DATA", data.season)
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-        return "sorrowful"
+const getDayOfWeek = (date) => {
+    const daysOfWeek = [
+        'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+    ];
+    return daysOfWeek[date.getDay()];
 }
+
+const fetchTodaysMysteries = async () => {
+    try {
+        const response = await fetch('http://calapi.inadiutorium.cz/api/v0/en/calendars/general-en/today');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        const date = new Date();
+        const today = getDayOfWeek(date).toLowerCase();
+
+        let mysteries;
+        if (data.season === 'ordinary') {
+            switch (today) {
+                case 'monday':
+                case 'saturday':
+                    mysteries = 'joyful';
+                    break;
+                case 'tuesday':
+                case 'friday':
+                    mysteries = 'sorrowful';
+                    break;
+                case 'wednesday':
+                case 'sunday':
+                    mysteries = 'glorious';
+                    break;
+                case 'thursday':
+                    mysteries = 'luminous';
+                    break;
+                default:
+                    mysteries = 'invalid day';
+                    break;
+            }
+        } else {
+            mysteries = 'season not ordinary';
+        }
+
+        return mysteries;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return 'error';
+    }
+};
 
 export default fetchTodaysMysteries;
 

@@ -7,10 +7,15 @@ import fetchTodaysMysteries from './functions/fetchTodaysMysteries'
 
 const App = () => {
 
+  useEffect(() => {
+    const todaysMysteries = fetchTodaysMysteries();  
+    console.log("TM", todaysMysteries);    
+  }, [])
+  
 
-  const todaysMysteries = fetchTodaysMysteries()
 
-  const [activeMysteries, setActiveMysteries] = useState(todaysMysteries)
+
+  const [activeMysteries, setActiveMysteries] = useState(null);
 
 
   return (
