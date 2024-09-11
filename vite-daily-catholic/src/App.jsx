@@ -3,7 +3,7 @@ import './App.css'
 import mysteryData from './data/mysteryData'
 import CategoryCard from './components/CategoryCard'
 import fetchTodaysMysteries from './functions/fetchTodaysMysteries'
-// import MysteryCard from './components/MysteryCard'
+import MysteryCard from './components/MysteryCard'
 
 const App = () => {
 
@@ -14,10 +14,12 @@ const App = () => {
   
   const [activeMysteries, setActiveMysteries] = useState(null);
 
-
   return (
     <>
       <h1 className='text-blue-500'>{`${activeMysteries}`}</h1>
+
+      <button onClick={() => fetchTodaysMysteries(setActiveMysteries)} >Today's Mystery</button>
+
       <div className='flex p-9 gap-4'>
         {
           mysteryData.map((item, index) => (
@@ -30,10 +32,12 @@ const App = () => {
           ))
         }
       </div>
+
       {/* TODO:  */}
-      {/* <div className='flex p-9 gap-4'>
+      <div className='flex p-9 gap-4'>
+
         {
-          mysteryData.map(() => (
+          mysteryData.map((item, index) => (
             item.category === activeMysteries ?
             item.mysteries.map((mystery, index) => (
               <MysteryCard
@@ -46,7 +50,8 @@ const App = () => {
             ""
           ))
         }
-      </div> */}
+
+      </div>
 
     </>
   )
