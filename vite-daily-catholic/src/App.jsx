@@ -9,9 +9,9 @@ const App = () => {
 
   useEffect(() => {
     const todaysMysteries = fetchTodaysMysteries(setActiveMysteries);  
-    console.log("TM", todaysMysteries);    
+    console.log("TM", todaysMysteries);
   }, []);
-
+  
   const [activeMysteries, setActiveMysteries] = useState(null);
 
 
