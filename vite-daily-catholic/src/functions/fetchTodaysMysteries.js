@@ -21,13 +21,12 @@ const getDayOfWeek = (date) => {
     return daysOfWeek[date.getDay()];
 }
 
-const fetchTodaysMysteries = async () => {
+const fetchTodaysMysteries = async (updateMysteries) => {
     try {
         const response = await fetch('http://calapi.inadiutorium.cz/api/v0/en/calendars/general-en/today');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-
         const data = await response.json();
         const date = new Date();
         const today = getDayOfWeek(date).toLowerCase();
@@ -54,10 +53,76 @@ const fetchTodaysMysteries = async () => {
                     mysteries = 'invalid day';
                     break;
             }
+            updateMysteries(mysteries)
+        } else if (data.season === 'lent') {
+            switch (today) {
+                case 'monday':
+                case 'saturday':
+                    mysteries = 'joyful';
+                    break;
+                case 'tuesday':
+                case 'friday':
+                    mysteries = 'sorrowful';
+                    break;
+                case 'wednesday':
+                case 'sunday':
+                    mysteries = 'glorious';
+                    break;
+                case 'thursday':
+                    mysteries = 'luminous';
+                    break;
+                default:
+                    mysteries = 'invalid day';
+                    break;
+            }
+            updateMysteries(mysteries)
+        } else if (data.season === 'advent' || data.season === 'christmas') {
+            switch (today) {
+                case 'monday':
+                case 'saturday':
+                    mysteries = 'joyful';
+                    break;
+                case 'tuesday':
+                case 'friday':
+                    mysteries = 'sorrowful';
+                    break;
+                case 'wednesday':
+                case 'sunday':
+                    mysteries = 'glorious';
+                    break;
+                case 'thursday':
+                    mysteries = 'luminous';
+                    break;
+                default:
+                    mysteries = 'invalid day';
+                    break;
+            }
+            updateMysteries(mysteries)
+        } else if (data.season === 'easter') {
+            switch (today) {
+                case 'monday':
+                case 'saturday':
+                    mysteries = 'joyful';
+                    break;
+                case 'tuesday':
+                case 'friday':
+                    mysteries = 'sorrowful';
+                    break;
+                case 'wednesday':
+                case 'sunday':
+                    mysteries = 'glorious';
+                    break;
+                case 'thursday':
+                    mysteries = 'luminous';
+                    break;
+                default:
+                    mysteries = 'invalid day';
+                    break;
+            }
+            updateMysteries(mysteries)
         } else {
-            mysteries = 'season not ordinary';
+            mysteries = 'invalid season';
         }
-
         return mysteries;
     } catch (error) {
         console.error('Error fetching data:', error);

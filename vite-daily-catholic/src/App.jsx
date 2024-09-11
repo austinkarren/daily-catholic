@@ -8,12 +8,9 @@ import fetchTodaysMysteries from './functions/fetchTodaysMysteries'
 const App = () => {
 
   useEffect(() => {
-    const todaysMysteries = fetchTodaysMysteries();  
+    const todaysMysteries = fetchTodaysMysteries(setActiveMysteries);  
     console.log("TM", todaysMysteries);    
-  }, [])
-  
-
-
+  }, []);
 
   const [activeMysteries, setActiveMysteries] = useState(null);
 
