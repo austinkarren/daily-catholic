@@ -1,10 +1,10 @@
-const CategoryCard = (props) => {
+const CategoryCard = ({onClick, image, title}) => {
     return (
-        <div onClick={props.onClick} className="flex flex-col items-center w-1/4">
-            <div className="">
-                <img src={props.image} className="rounded-2xl"/>
+        <div onClick={onClick} className="flex flex-col items-center w-1/4 h-full">
+            <div className="w-full h-full">
+                <img src={image} className="rounded-2xl w-full h-full object-cover"/>
             </div>
-            <p className="capitalize">{props.title}</p>
+            <p className="capitalize text-center">{title}</p>
         </div>
     )
 }

@@ -1,4 +1,7 @@
 import annunciationImage from '../assets/annunciation.jpg'
+import luminousImage from '../assets/luminous.jpg'
+import agonyImage from '../assets/gethsemane.jpg'
+import gloriousImage from '../assets/resurrection.jpg'
 
 const mysteryData = [
     {
@@ -34,93 +37,93 @@ const mysteryData = [
     },
     {
         category: "luminous",
-        image: annunciationImage,
+        image: luminousImage,
         mysteries: [
             {
                 name: "The Baptism in the Jordan",
-                image: annunciationImage,
+                image: luminousImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Wedding Feast at Cana",
-                image: annunciationImage,
+                image: luminousImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Proclamation of the Kingdom",
-                image: annunciationImage,
+                image: luminousImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Transfiguration",
-                image: annunciationImage,
+                image: luminousImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Institution of the Eucharist",
-                image: annunciationImage,
+                image: luminousImage,
                 scripture: "scripture passage"
             },
         ]
     },
     {
         category: "sorrowful",
-        image: annunciationImage,
+        image: agonyImage,
         mysteries: [
             {
                 name: "The Agony in the Garden",
-                image: annunciationImage,
+                image: agonyImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Scourging at the Pillar",
-                image: annunciationImage,
+                image: agonyImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Crowning of Thorns",
-                image: annunciationImage,
+                image: agonyImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Carrying of the Cross",
-                image: annunciationImage,
+                image: agonyImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Crucifixion",
-                image: annunciationImage,
+                image: agonyImage,
                 scripture: "scripture passage"
             },
         ]
     },
     {
         category: "glorious",
-        image: annunciationImage,
+        image: gloriousImage,
         mysteries: [
             {
                 name: "The Resurrection",
-                image: annunciationImage,
+                image: gloriousImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Ascension",
-                image: annunciationImage,
+                image: gloriousImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Descent of the Holy Spirit",
-                image: annunciationImage,
+                image: gloriousImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Assumption",
-                image: annunciationImage,
+                image: gloriousImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Coronation of Mary",
-                image: annunciationImage,
+                image: gloriousImage,
                 scripture: "scripture passage"
             },
         ]
