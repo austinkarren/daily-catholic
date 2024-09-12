@@ -8,21 +8,24 @@ import MysteryCard from './components/MysteryCard'
 const App = () => {
 
   useEffect(() => {
-    const todaysMysteries = fetchTodaysMysteries(setActiveMysteries);
+    fetchTodaysMysteries(setActiveMysteries);
   }, []);
 
   const [activeMysteries, setActiveMysteries] = useState(null);
 
   return (
     <div className='w-[60%] py-9 mx-auto '>
-      <button
-        onClick={() => fetchTodaysMysteries(setActiveMysteries)}
-        className='bg-slate-500 py-2 px-4 rounded-md text-white'
-      >
-        Return to Today's Mystery
-      </button>
+      <div className='flex justify-between w-full'>
+        <h1 className='text-2xl capitalize underline underline-offset-4'>{activeMysteries}</h1>
+        <button
+          onClick={() => fetchTodaysMysteries(setActiveMysteries)}
+          className='bg-slate-500 py-2 px-4 rounded-md text-white'
+        >
+          Return to Today's Mystery
+        </button>
+      </div>
 
-      <div className='flex gap-4 pt-9 h-[400px]'>
+      <div className='flex gap-4 pt-9 h-[400px] justify-center'>
         {
           mysteryData.map((item, index) => (
             <CategoryCard
@@ -30,13 +33,14 @@ const App = () => {
               title={item.category}
               image={item.image}
               onClick={() => setActiveMysteries(item.category)}
+              active={activeMysteries === item.category ? true : false}
             />
           ))
         }
       </div>
 
       {/* TODO:  */}
-      <div className='flex gap-4 pt-9 h-[250px]'>
+      <div className='flex gap-4 pt-12 h-[250px]'>
         {
           mysteryData
             .filter(item => item.category === activeMysteries)
