@@ -46,11 +46,11 @@ const App = () => {
         slidesPerView={1}
         onSlideChange={(swiper) => handleSlideChange(swiper)}
         ref={swiperRef}
-        className='w-1/3'
+        className='w-1/4'
       >
         {
           mysteryData.map((item, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className='max-h-[500px]'>
               <CategoryCard
                 title={item.category}
                 image={item.image}
@@ -62,7 +62,7 @@ const App = () => {
       </Swiper>
 
       {/* TODO:  */}
-      <div className='flex gap-4 pt-2 h-[250px]'>
+      <div className='flex gap-4 pt-2'>
         {
           mysteryData
             .filter(item => item.category === activeMysteries)
