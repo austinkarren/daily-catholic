@@ -4,7 +4,7 @@ const MysteryCard = ({image, title}) => {
             <div className="">
                 <img src={image} className="rounded-2xl"/>
             </div>
-            <p className="capitalize text-center">{title}</p>
+            <p className="capitalize text-center text-white">{title}</p>
         </div>
     )
 }

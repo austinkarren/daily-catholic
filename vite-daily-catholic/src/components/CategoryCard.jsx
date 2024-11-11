@@ -5,13 +5,14 @@ const CategoryCard = ({ onClick, image, title, active }) => {
     const inactiveFontClasses = 'font-medium text-sm'
     return (
         <div
+            data-slide-name={title}
             onClick={onClick}
-            className="flex flex-col items-center w-1/4 h-full cursor-pointer"
+            className="h-full cursor-pointer"
         >
-            <div className={`flex flex-col items-center w-full cursor-pointer ${active ? activeHeightClasses : inactiveHeightClasses}`}>
+            <div className={`cursor-pointer ${active ? activeHeightClasses : inactiveHeightClasses}`}>
                 <img src={image} className="rounded-2xl w-full h-full object-cover" />
             </div>
-            <p className={`capitalize text-center ${active ? activeFontClasses : inactiveFontClasses}`}>{title}</p>
+            <p className={`capitalize text-center text-white ${active ? activeFontClasses : inactiveFontClasses}`}>{title}</p>
         </div>
     )
 }
