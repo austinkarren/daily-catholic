@@ -1,7 +1,15 @@
 import annunciationImage from '../assets/annunciation.jpg'
 import luminousImage from '../assets/luminous.jpg'
 import agonyImage from '../assets/gethsemane.jpg'
+import visitationImage from '../assets/visitation.jpg'
+import nativityImage from '../assets/nativity.jpg'
+import presentationImage from '../assets/presentation.jpg'
+import findingImage from '../assets/finding.jpg'
 import gloriousImage from '../assets/resurrection.jpg'
+import canaImage from '../assets/cana.jpg'
+import proclamationImage from '../assets/proclamation.jpg'
+import transfigurationImage from '../assets/transfiguration.jpg'
+import eucharistImage from '../assets/eucharist.jpg'
 
 const mysteryData = [
     {
@@ -15,22 +23,22 @@ const mysteryData = [
             },
             {
                 name: "The Visitation",
-                image: annunciationImage,
+                image: visitationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Nativity",
-                image: annunciationImage,
+                image: nativityImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Presentation in the Temple",
-                image: annunciationImage,
+                image: presentationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Finding in the Temple",
-                image: annunciationImage,
+                image: findingImage,
                 scripture: "scripture passage"
             },
         ]
@@ -46,22 +54,22 @@ const mysteryData = [
             },
             {
                 name: "The Wedding Feast at Cana",
-                image: luminousImage,
+                image: canaImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Proclamation of the Kingdom",
-                image: luminousImage,
+                image: proclamationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Transfiguration",
-                image: luminousImage,
+                image: transfigurationImage,
                 scripture: "scripture passage"
             },
             {
                 name: "The Institution of the Eucharist",
-                image: luminousImage,
+                image: eucharistImage,
                 scripture: "scripture passage"
             },
         ]

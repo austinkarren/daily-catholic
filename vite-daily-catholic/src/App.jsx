@@ -49,6 +49,7 @@ const App = () => {
       </div>
 
       <Swiper
+        style={{ '--swiper-navigation-size': '25px' }}
         modules={[Navigation]}
         navigation={true}
         spaceBetween={50}
@@ -80,7 +81,7 @@ const App = () => {
                 <MysteryCard
                   key={index}
                   title={mystery.name}
-                  image={item.image}
+                  image={mystery.image}
                 />
               ))
             )

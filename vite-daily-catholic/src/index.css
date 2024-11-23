@@ -10,16 +10,16 @@ body {
     color: black;
     border-radius: 50px;
     background-color: white;
-    padding: 50px;
+    padding: 30px;
     right: auto;
     left: 250px;
-    top: 200px;
+    top: 200px;    
 }
 .swiper-button-next {
     color: black;
     border-radius: 50px;
     background-color: white;
-    padding: 50px;
+    padding: 30px;
     right: 250px;
     left: auto;
     top: 200px;
