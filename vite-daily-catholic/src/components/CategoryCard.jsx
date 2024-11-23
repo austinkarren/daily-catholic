@@ -10,7 +10,7 @@ const CategoryCard = ({ onClick, image, title, active }) => {
             className="h-full cursor-pointer"
         >
             <div className={`cursor-pointer ${active ? activeHeightClasses : inactiveHeightClasses}`}>
-                <img src={image} className="rounded-2xl w-full h-full object-cover" />
+                <img src={image} className="rounded-2xl w-1/4 h-[440px] object-cover mx-auto" />
             </div>
             <p className={`capitalize text-center text-white ${active ? activeFontClasses : inactiveFontClasses}`}>{title}</p>
         </div>

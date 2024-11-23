@@ -5,3 +5,22 @@
 body {
     background-color: #2B4593;
 }
+
+.swiper-button-prev {
+    color: black;
+    border-radius: 50px;
+    background-color: white;
+    padding: 50px;
+    right: auto;
+    left: 250px;
+    top: 200px;
+}
+.swiper-button-next {
+    color: black;
+    border-radius: 50px;
+    background-color: white;
+    padding: 50px;
+    right: 250px;
+    left: auto;
+    top: 200px;
+}

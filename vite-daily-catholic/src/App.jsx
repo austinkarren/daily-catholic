@@ -5,7 +5,9 @@ import CategoryCard from './components/CategoryCard'
 import fetchTodaysMysteries from './functions/fetchTodaysMysteries'
 import MysteryCard from './components/MysteryCard'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/navigation';
 
 const App = () => {
 
@@ -26,27 +28,29 @@ const App = () => {
     fetchTodaysMysteries(setActiveMysteries);
     if (swiperRef.current) {
       swiperRef.current.swiper.slideTo(0);
-    }    
+    }
   }
 
   return (
     <div className='w-[60%] py-9 mx-auto'>
       <div className='flex justify-between w-full pb-10'>
         <h1 className='text-2xl capitalize underline underline-offset-4 text-white'>Today's mysteries are the <span className="text-red-600">{activeMysteries}</span> mysteries.</h1>
+      </div>
         <button
           onClick={() => resetSwiper()}
           className='bg-slate-500 py-2 px-4 rounded-md text-white'
         >
           Return to Today's Mystery
         </button>
-      </div>
 
-      <Swiper        
+      <Swiper
+        modules={[Navigation]}
+        navigation={true}
         spaceBetween={50}
         slidesPerView={1}
         onSlideChange={(swiper) => handleSlideChange(swiper)}
         ref={swiperRef}
-        className='w-1/4'
+        className='pb-10'
       >
         {
           mysteryData.map((item, index) => (
