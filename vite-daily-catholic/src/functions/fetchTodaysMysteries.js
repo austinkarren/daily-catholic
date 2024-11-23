@@ -123,7 +123,7 @@ const fetchTodaysMysteries = async (updateMysteries) => {
         } else {
             mysteries = 'invalid season';
         }
-        return mysteries;
+        // return mysteries;
     } catch (error) {
         console.error('Error fetching data:', error);
         return 'error';
@@ -131,11 +131,3 @@ const fetchTodaysMysteries = async (updateMysteries) => {
 };
 
 export default fetchTodaysMysteries;
-
-
-// Get the season
-//If ordinary time:
-//switch (day)
-//case 'monday'
-//return 'joyfyul'
-//break
