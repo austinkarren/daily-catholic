@@ -1,4 +1,4 @@
-// TODO: Logic wil check liturgical season first then day of the week
+// TODO: Logic will check liturgical season first then day of the week
 
 //The cycle of the mysteries follows the rhythm of the liturgical year observed by the Catholic Church. During Ordinary time, what day we pray the Rosary is as follows: 
 // Monday: The Joyful Mysteries of the Rosary
@@ -15,11 +15,20 @@
 // During the season of Lent, the Sorrowful Mysteries are prayed on Sundays.
 
 const getDayOfWeek = (date) => {
-    const daysOfWeek = [
-        'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
-    ];
+    const daysOfWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     return daysOfWeek[date.getDay()];
 }
+
+// Define the mysteries mapping for each day
+const MYSTERIES_BY_DAY = {
+    monday: 'joyful',
+    tuesday: 'sorrowful',
+    wednesday: 'glorious',
+    thursday: 'luminous',
+    friday: 'sorrowful',
+    saturday: 'joyful',
+    sunday: 'glorious'
+};
 
 const fetchTodaysMysteries = async (updateMysteries) => {
     try {
@@ -28,105 +37,26 @@ const fetchTodaysMysteries = async (updateMysteries) => {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        const date = new Date();
-        const today = getDayOfWeek(date).toLowerCase();
-
-        let mysteries;
-        if (data.season === 'ordinary') {
-            switch (today) {
-                case 'monday':
-                case 'saturday':
-                    mysteries = 'joyful';
-                    break;
-                case 'tuesday':
-                case 'friday':
-                    mysteries = 'sorrowful';
-                    break;
-                case 'wednesday':
-                case 'sunday':
-                    mysteries = 'glorious';
-                    break;
-                case 'thursday':
-                    mysteries = 'luminous';
-                    break;
-                default:
-                    mysteries = 'invalid day';
-                    break;
-            }
-            updateMysteries(mysteries)
-        } else if (data.season === 'lent') {
-            switch (today) {
-                case 'monday':
-                case 'saturday':
-                    mysteries = 'joyful';
-                    break;
-                case 'tuesday':
-                case 'friday':
-                    mysteries = 'sorrowful';
-                    break;
-                case 'wednesday':
-                case 'sunday':
-                    mysteries = 'glorious';
-                    break;
-                case 'thursday':
-                    mysteries = 'luminous';
-                    break;
-                default:
-                    mysteries = 'invalid day';
-                    break;
-            }
-            updateMysteries(mysteries)
-        } else if (data.season === 'advent' || data.season === 'christmas') {
-            switch (today) {
-                case 'monday':
-                case 'saturday':
-                    mysteries = 'joyful';
-                    break;
-                case 'tuesday':
-                case 'friday':
-                    mysteries = 'sorrowful';
-                    break;
-                case 'wednesday':
-                case 'sunday':
-                    mysteries = 'glorious';
-                    break;
-                case 'thursday':
-                    mysteries = 'luminous';
-                    break;
-                default:
-                    mysteries = 'invalid day';
-                    break;
-            }
-            updateMysteries(mysteries)
-        } else if (data.season === 'easter') {
-            switch (today) {
-                case 'monday':
-                case 'saturday':
-                    mysteries = 'joyful';
-                    break;
-                case 'tuesday':
-                case 'friday':
-                    mysteries = 'sorrowful';
-                    break;
-                case 'wednesday':
-                case 'sunday':
-                    mysteries = 'glorious';
-                    break;
-                case 'thursday':
-                    mysteries = 'luminous';
-                    break;
-                default:
-                    mysteries = 'invalid day';
-                    break;
-            }
-            updateMysteries(mysteries)
-        } else {
-            mysteries = 'invalid season';
+        const today = getDayOfWeek(new Date());
+        
+        // Handle special seasons
+        if (data.season === 'lent' && today === 'sunday') {
+            updateMysteries('sorrowful');
+            return;
         }
-        // return mysteries;
+        
+        if ((data.season === 'advent' || data.season === 'christmas') && today === 'sunday') {
+            updateMysteries('joyful');
+            return;
+        }
+        
+        // Default case - use the regular mapping
+        const mysteries = MYSTERIES_BY_DAY[today] || 'invalid day';
+        updateMysteries(mysteries);
+        
     } catch (error) {
         console.error('Error fetching data:', error);
-        return 'error';
+        updateMysteries('error');
     }
 };
 
