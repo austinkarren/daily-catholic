@@ -1,21 +1,32 @@
 // Function to calculate Easter Sunday for a given year
 const getEasterSunday = (year) => {
-    const a = year % 19;
-    const b = Math.floor(year / 100);
-    const c = year % 100;
-    const d = Math.floor(b / 4);
-    const e = b % 4;
-    const f = Math.floor((b + 8) / 25);
-    const g = Math.floor((b - f + 1) / 3);
-    const h = (19 * a + b - d - g + 15) % 30;
-    const i = Math.floor(c / 4);
-    const k = c % 4;
-    const l = (32 + 2 * e + 2 * i - h - k) % 7;
-    const m = Math.floor((a + 11 * h + 22 * l) / 451);
-    const month = Math.floor((h + l - 7 * m + 114) / 31);
-    const day = ((h + l - 7 * m + 114) % 31) + 1;
-    
-    return new Date(year, month - 1, day);
+    // Calculate the Golden Number - position in the 19-year Metonic cycle
+    const goldenNumber = year % 19;
+    // Calculate the century
+    const century = Math.floor(year / 100);
+    // Years since the beginning of the century
+    const yearsInCentury = year % 100;
+    // Number of leap years to account for
+    const leapYearCorrection = Math.floor(century / 4);
+    // Non-leap century years adjustment
+    const centuryMod4 = century % 4;
+    // Special correction for the Gregorian calendar
+    const gregorianAdjustment = Math.floor((century + 8) / 25);
+    // Another adjustment for the Gregorian calendar
+    const gregorianOffset = Math.floor((century - gregorianAdjustment + 1) / 3);
+    // Calculate the "epact" (the age of the moon on January 1)
+    const epact = (19 * goldenNumber + century - leapYearCorrection - gregorianOffset + 15) % 30;
+    // Number of leap days (accounting for the solar year)
+    const solarCorrection = Math.floor(yearsInCentury / 4);
+    // Leap year adjustment
+    const leapYearOffset = yearsInCentury % 4;
+    // Calculate the Sunday correction
+    const sundayCorrection = (32 + 2 * centuryMod4 + 2 * solarCorrection - epact - leapYearOffset) % 7;
+    // Final calculation for the month and day
+    const monthCalculation = Math.floor((epact + sundayCorrection - 7 * Math.floor((goldenNumber + 11 * epact + 22 * sundayCorrection) / 451) + 114) / 31);
+    const day = ((epact + sundayCorrection - 7 * Math.floor((goldenNumber + 11 * epact + 22 * sundayCorrection) / 451) + 114) % 31) + 1;
+
+    return new Date(year, monthCalculation - 1, day);
 }
 
 // Function to get the liturgical season for a given date
@@ -24,14 +35,11 @@ const getLiturgicalSeason = (date = new Date()) => {
     const easter = getEasterSunday(year);
     const ashWednesday = new Date(easter);
     ashWednesday.setDate(easter.getDate() - 46); // 46 days before Easter (40 days of Lent + Sundays)
-    
     const pentecost = new Date(easter);
     pentecost.setDate(easter.getDate() + 49); // 49 days after Easter (Pentecost Sunday)
-    
     // First Sunday of Advent is the Sunday closest to November 30th
     let firstSundayOfAdvent = new Date(year, 10, 30); // November 30th
     firstSundayOfAdvent.setDate(30 - firstSundayOfAdvent.getDay());
-    
     // Christmas season starts on Christmas Eve and ends on the Sunday after Epiphany
     const christmasStart = new Date(year, 11, 24); // December 24th
     const epiphany = new Date(year, 0, 6); // January 6th
@@ -40,7 +48,7 @@ const getLiturgicalSeason = (date = new Date()) => {
     while (baptismOfTheLord.getDay() !== 0) {
         baptismOfTheLord.setDate(baptismOfTheLord.getDate() + 1);
     }
-    
+
     // Check the season
     if (date >= ashWednesday && date < easter) {
         return 'lent';
@@ -76,22 +84,22 @@ const fetchTodaysMysteries = (updateMysteries) => {
         const today = new Date();
         const season = getLiturgicalSeason(today);
         const dayOfWeek = getDayOfWeek(today);
-        
+
         // Handle special seasons
         if (season === 'lent' && dayOfWeek === 'sunday') {
             updateMysteries('sorrowful');
             return;
         }
-        
+
         if ((season === 'advent' || season === 'christmas') && dayOfWeek === 'sunday') {
             updateMysteries('joyful');
             return;
         }
-        
+
         // Default case - use the regular mapping
         const mysteries = MYSTERIES_BY_DAY[dayOfWeek] || 'invalid day';
         updateMysteries(mysteries);
-        
+
     } catch (error) {
         console.error('Error determining mysteries:', error);
         updateMysteries('error');

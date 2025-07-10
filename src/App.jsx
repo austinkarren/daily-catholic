@@ -57,10 +57,8 @@ const App = () => {
         </button>
       </div>
 
-      <p> asdf{activeMysteryIndex}</p>
 
       {activeMysteryIndex !== null && (
-
         <Swiper
           style={{ '--swiper-navigation-size': '25px' }}
           modules={[Navigation]}
@@ -75,7 +73,6 @@ const App = () => {
           {
             mysteryData.map((item, index) => (
               <SwiperSlide key={index} className='max-h-[500px]'>
-                <p>{activeMysteries} : {item.category} : {initialMysteries}</p>
                 <CategoryCard
                   title={item.category}
                   image={item.image}
