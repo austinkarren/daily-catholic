@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import AnnouncementBar from './components/AnnouncementBar';
 
 const App = () => {
 
@@ -45,18 +46,12 @@ const App = () => {
 
 
   return (
-    <div className='w-[60%] py-9 mx-auto'>
-      <div className='flex flex-col items-center w-full pb-10'>
-        <h1 className='text-3xl capitalize underline underline-offset-4 text-white pb-5'>Today's mysteries are the <span className="text-red-600">{initialMysteries}</span> mysteries.</h1>
-        <h2 className='text-xl capitalize underline underline-offset-4 text-white pb-5'>You are viewing the <span className="text-red-600">{activeMysteries}</span> mysteries.</h2>
-        <button
-          onClick={() => resetSwiper()}
-          className='bg-slate-500 py-2 px-4 rounded-md text-white'
-        >
-          Return to Today's Mystery
-        </button>
-      </div>
 
+    <div className='mx-auto'>
+      <AnnouncementBar
+        mysteries={initialMysteries}
+        resetSwiper={resetSwiper}
+      />
 
       {activeMysteryIndex !== null && (
         <Swiper
