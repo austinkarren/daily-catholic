@@ -51,6 +51,7 @@ const App = () => {
       <AnnouncementBar
         mysteries={initialMysteries}
         resetSwiper={resetSwiper}
+        activeMysteries={activeMysteries} 
       />
 
       {activeMysteryIndex !== null && (
