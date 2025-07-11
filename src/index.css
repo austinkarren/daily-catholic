@@ -24,3 +24,23 @@ body {
     left: auto;
     top: 200px;
 }
+
+
+.swiper-pagination-bullet {
+    width: auto;
+    height: auto;
+    text-align: center;
+    opacity: 0.5;
+    color: white;
+    background: transparent;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+  }

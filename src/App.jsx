@@ -9,6 +9,8 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import AnnouncementBar from './components/AnnouncementBar';
+import { Pagination } from 'swiper/modules';
+import 'swiper/css/pagination';
 
 const App = () => {
 
@@ -20,6 +22,8 @@ const App = () => {
     sorrowful: 2,
     glorious: 3
   }
+
+  const paginationWords = ["Joyful", "Luminous", "Sorrowful", "Glorious"];
 
   useEffect(() => {
     fetchTodaysMysteries((mysteryCategory) => {
@@ -51,14 +55,20 @@ const App = () => {
       <AnnouncementBar
         mysteries={initialMysteries}
         resetSwiper={resetSwiper}
-        activeMysteries={activeMysteries} 
+        activeMysteries={activeMysteries}
       />
 
       {activeMysteryIndex !== null && (
         <Swiper
           style={{ '--swiper-navigation-size': '25px' }}
-          modules={[Navigation]}
+          modules={[Navigation, Pagination]}
           navigation={true}
+          pagination={{
+            clickable: true,
+            renderBullet: function (index, className) {
+              return '<span class="' + className + '">' + paginationWords[index] + '</span>';
+            },
+          }} 
           spaceBetween={50}
           slidesPerView={1}
           onSlideChange={(swiper) => handleSlideChange(swiper)}

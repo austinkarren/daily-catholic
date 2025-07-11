@@ -7,12 +7,11 @@ const CategoryCard = ({ onClick, image, title, active }) => {
         <div
             data-slide-name={title}
             onClick={onClick}
-            className="h-full cursor-pointer"
+            className="h-full cursor-pointer mb-5"
         >
             <div className={`cursor-pointer ${active ? activeHeightClasses : inactiveHeightClasses}`}>
                 <img src={image} className="rounded-2xl w-1/4 h-[440px] object-cover mx-auto" />
             </div>
-            <p className={`capitalize text-center text-white ${active ? activeFontClasses : inactiveFontClasses}`}>{title}</p>
         </div>
     )
 }
