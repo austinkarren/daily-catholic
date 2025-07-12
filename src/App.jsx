@@ -11,6 +11,7 @@ import 'swiper/css/navigation';
 import AnnouncementBar from './components/AnnouncementBar';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css/pagination';
+import ScriptureSection from './components/ScriptureSection';
 
 const App = () => {
 
@@ -90,8 +91,7 @@ const App = () => {
           }
         </Swiper>
       )}
-
-      {/* TODO:  */}
+      {/* Mystery Cards */}
       <div className='flex gap-4 pt-2'>
         {
           mysteryData
@@ -106,9 +106,8 @@ const App = () => {
               ))
             )
         }
-
       </div>
-
+      <ScriptureSection />
     </div>
   )
 }
